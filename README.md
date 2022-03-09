@@ -1,5 +1,6 @@
 # KeyAlloSite
 Companion software for "Coevolution-based prediction of key allosteric residues for protein function regulation".
+
 KeyAlloSite is a computational method for predicting key allosteric residues for protein function regulation.
 
 ## Dependencies
