@@ -37,6 +37,7 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
 ```
     Example command: python RemoveOverlapResidue.py 3lcb 19
                      sh RemoveOverlapPocket.sh 19 10
+                     python TransformFN.py 3lcb
                      sh PocketsEvolutionaryCouplingStrength.sh 3lcb 19
                      python NormalizedPocketsEvolutionaryCouplingStrength.py 3lcb 19
 
