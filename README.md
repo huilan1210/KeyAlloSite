@@ -49,7 +49,7 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
 6. Calculate the evolutionary coupling values between residues in the orthosteric and allosteric pockets.
 ```
     Example command: python RemoveOverlapOrthoResidue.py 5mo4
-.....................sh PocketEvolutionCouplingValue.sh 5mo4
+                     sh PocketEvolutionCouplingValue.sh 5mo4
 
 ```
 
