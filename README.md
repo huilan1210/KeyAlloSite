@@ -36,15 +36,15 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
 5. Residues in the pockets found by CAVITY that overlap with the orthosteric pocket are removed, and the evolutionary coupling strength between each pocket and the orthosteric pocket is calculated and normalized to Z-scores.
 ```
     Example command: python RemoveOverlapResidue.py 3lcb 19
-                 sh RemoveOverlapPocket.sh 19 10
-                 sh PocketsEvolutionaryCouplingStrength.sh 3lcb 19
-                 python NormalizedPocketsEvolutionaryCouplingStrength.py 3lcb 19
+                     sh RemoveOverlapPocket.sh 19 10
+                     sh PocketsEvolutionaryCouplingStrength.sh 3lcb 19
+                     python NormalizedPocketsEvolutionaryCouplingStrength.py 3lcb 19
 
 ```
 
    **Identification of key allosteric residues**:
 
-6. Calculate the evolutionary coupling value between the orthosteric and allosteric pockets.
+6. Calculate the evolutionary coupling values between residues in the orthosteric and allosteric pockets.
 ```
     Example command: sh PocketsEvolutionaryCouplingValue.sh 3lcb
 
