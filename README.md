@@ -1,7 +1,7 @@
 # KeyAlloSite
 Companion software for "Coevolution-based prediction of key allosteric residues for protein function regulation".
 
-KeyAlloSite is a computational method for predicting key allosteric residues for protein function regulation.
+KeyAlloSite is a computational method for predicting key allosteric residues for protein function regulation and calculating the evolutionary coupling strength between orthosteric and other pockets.
 
 ## Dependencies
 KeyAlloSite depends on [MAFFT](https://mafft.cbrc.jp/alignment/software/) to perform multiple sequence alignment, you need to install and compile it.
