@@ -9,48 +9,49 @@ KeyAlloSite depends on [plmc](https://github.com/debbiemarkslab/plmc) to perform
 
 KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id=14) to detect potential binding sites on the surface of a given protein structure, you can install and compile it alone or you can directly use our web server [CavityPlus](http://www.pkumdl.cn/cavityplus).
 
-The following modules are required and will be installed upon installation:
-
--   [numpy](https://github.com/numpy/numpy)
--   [Matplotlib-PyPlot](https://github.com/zawster/Matplotlib-PyPlot)
-
-
 ## Usage
 
-1. First, the user need to identify the potential binding pockets on the surface of a given protein structure and the orthosteric pocket.
-2. Second, the user need to deal with the cavity files, such as renumbering residues and removing residues in the pockets that overlap with the orthosteric pocket.
+1. First, multiple sequence alignments are performed using MAFFT.
 ```
-usage: sh cavity_new.sh [PDB_ID] [Number_of_pockets] [The_number_of_the_orthosteric_pocket_found_by_CAVITY] 
+Example command: ./mafft 3lcb.fa > 3lcb.mafft
 
 ```
-
-3. Third, the user can calculate the motion correlations among the orthosteric pocket and other pockets in the top 3 slow modes and top 10 fast modes.
+2. Based on multiple sequence alignments, plmc was used to generate coevolutionary parameters and pairwise evolutionary coupling values between all residues.
 ```
-usage: python correlation_pockets.py [PDB_ID] [Number_of_pockets]
+Example command: ./plmc -c ./3lcb.EC -o ./3lcb.eij -le 16.0 -lh 0.01 -m 100 -g -f ACEK_ECO5E ./3lcb.mafft >3lcb.log
 
 ```
 
-4. Finally, the predicted potential allosteric pockets and the corresponding Z-Score will be displayed on the screen and saved as a file.
-
-**Example**:
-
-Input:
+3. According to the coevolutionary parameters obtained in the previous step, the matlab script in plmc was used to calculate the evolutionary coupling strength FN between residues.
+```
+Example command: matlab -r read_EC_matrix
 
 ```
-sh cavity_new.sh 1a3w 14 1
+**Evolutionary coupling strength between orthosteric and other pockets**:
 
-python correlation_pockets.py 1a3w 14
+4. Define orthosteric pockets and use CAVITY to detect all possible ligand binding pockets on the protein surface.
+
+5. Residues in the pockets found by CAVITY that overlap with the orthosteric pocket are removed, and the evolutionary coupling strength between each pocket and the orthosteric pocket is calculated and normalized to Z-scores.
+```
+Example command: python RemoveOverlapResidue.py 3lcb 19
+                 sh RemoveOverlapPocket.sh 19 10
+                 sh PocketsEvolutionaryCouplingStrength.sh 3lcb 19
+                 python NormalizedPocketsEvolutionaryCouplingStrength.py 3lcb 19
+
 ```
 
-Output files include:
+**Identification of key allosteric residues**:
+
+6. Calculate the evolutionary coupling value between the orthosteric and allosteric pockets.
+```
+Example command: sh PocketsEvolutionaryCouplingValue.sh 3lcb
 
 ```
-Cavity_Zscore_Prediction_Allo_Site_1a3w.txt:   predicted potential allosteric sites,the first column is the number of the pockets, and the second column is the Z-Score corresponding to the pockets.
-Cavity_Zscore_Rank_All_1a3w.txt:               the rankings of all pockets and the corresponding Z-Score.
-Top3SlowMode_Zscore_Rank_1a3w.txt:             the rankings of all pockets in the top 3 slow modes and the corresponding Z-Score.
-Top10FastMode_Zscore_Rank_1a3w.txt:            the rankings of all pockets in the top 10 fast modes and the corresponding Z-Score.
+
+7. Key allosteric residues are predicted by pairwise comparison of the differences in evolutionary coupling values corresponding to allosteric pocket residues.
+```
+Example command: python PredictKeyAllostericResidue.py 3lcb
+
 ```
 
-
-Please address all questions to juanxie@pku.edu.cn 
-
+Please address all questions to lhlai@pku.edu.cn. 
