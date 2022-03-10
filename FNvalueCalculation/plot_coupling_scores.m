@@ -13,7 +13,7 @@ for i=1:(N-1)
         FN(j,i) = FN(i,j);
     end
 end
-dlmwrite('Result_FN_3lcb.txt',FN);
+dlmwrite('Result_FN_5mo4.txt',FN);
 %
 % Average Product Correction
 %
@@ -32,7 +32,7 @@ if nargout == 0
     colorbar
     grid on
     set(gcf,'color','w')
-    dlmwrite('Result_EC_3lcb.txt',CN);
+    dlmwrite('Result_EC_5mo4.txt',CN);
 end
 end
 
