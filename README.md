@@ -53,7 +53,7 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
 
 ```
 
-7. Key allosteric residues are predicted by pairwise comparison of the differences in evolutionary coupling values corresponding to allosteric pocket residues.
+7. Key allosteric residues are predicted by pairwise comparison of the differences in evolutionary coupling values corresponding to the residues in the allosteric pocket.
 ```
     Example command: python PredictKeyAllostericResidue.py 5mo4
 
