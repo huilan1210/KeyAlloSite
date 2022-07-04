@@ -45,6 +45,3 @@ do
         mv thischains_cavity_${line}_nooverlap.pdb thischains_cavity_${line}_nooverlap_ortho.pdb
     fi
 done
-
-#Residue of orthosteric pocket
-#cat oth$3pkt1.pdb |grep '^ATOM  ' |cut -c18-26 |sed 's/...../& /g' |sort -u |sort -k 3n > oth$1pkt1.txt
