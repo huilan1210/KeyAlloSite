@@ -1,4 +1,4 @@
-#Remove residues in the orthosteric pocket that overlap with the allosteric pocket.
+#Remove residues in the allosteric pocket that overlap with the orthosteric pocket.
 import numpy as np
 import os
 import sys
