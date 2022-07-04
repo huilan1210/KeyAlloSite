@@ -9,7 +9,7 @@ import pandas as pd
 pdbID = sys.argv[1]
 pocketNum = sys.argv[2]
 
-#Load the evolutionary couping strength between the orthosteric and other cavities.
+#Load the evolutionary couping strength between the orthosteric and other pockets.
 SumcorrList = []
 cavity = []
 
