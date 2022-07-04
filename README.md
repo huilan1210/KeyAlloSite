@@ -1,7 +1,7 @@
 # KeyAlloSite
 Companion software for "Coevolution-based prediction of key allosteric residues for protein function regulation".
 
-KeyAlloSite is a computational method for predicting key allosteric residues for protein function regulation and calculating the evolutionary coupling strength between orthosteric and other pockets.
+KeyAlloSite is a computational method for predicting allosteric site and key allosteric residues (allo-residues) based on the evolutionary coupling model.
 
 ## Dependencies
 KeyAlloSite depends on [MAFFT](https://mafft.cbrc.jp/alignment/software/) to perform multiple sequence alignment, you need to install and compile it.
@@ -41,14 +41,14 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
                      sh PocketEvolutionCouplingStrength.sh 5mo4 16
                      python NormalizedPocketEvolutionCouplingStrength.py 5mo4 16
 
-    Output: NormalizedPocketEvolutionCouplingStrength_Rank_5mo4.txt: normalized evolutionary coupling strength of each pocket, which have been ranked according to the Z-scores.
+    Output: NormalizedPocketEvolutionCouplingStrength_Rank_5mo4.txt: normalized evolutionary coupling strength of each pocket, which have been ranked according to the Z-scores. Pockets with Z-scores greater than 0.5 were predicted as potential allosteric sites.
 ```
 
    **Identification of key allosteric residues**:
 
 6. Calculate the evolutionary coupling values between residues in the orthosteric and allosteric pockets.
 ```
-    Example command: python RemoveOverlapOrthoResidue.py 5mo4
+    Example command: python RemoveOverlapAlloResidue.py 5mo4
                      sh PocketEvolutionCouplingValue.sh 5mo4
 
 ```
@@ -61,4 +61,4 @@ KeyAlloSite depends on [CAVITY](http://mdl.ipc.pku.edu.cn/mdlweb/register.php?id
 
 ```
 
-Please address all questions to lhlai@pku.edu.cn. 
+Please address all questions to juanxie@pku.edu.cn. 
